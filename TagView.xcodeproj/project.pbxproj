@@ -11,6 +11,7 @@
 		AD9DCEC02711D29300CED5AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9DCEBF2711D29300CED5AE /* ContentView.swift */; };
 		AD9DCEC22711D29800CED5AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD9DCEC12711D29800CED5AE /* Assets.xcassets */; };
 		AD9DCEC52711D29800CED5AE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD9DCEC42711D29800CED5AE /* Preview Assets.xcassets */; };
+		AD9DCECE2711D32100CED5AE /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9DCECD2711D32100CED5AE /* Home.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		AD9DCEBF2711D29300CED5AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AD9DCEC12711D29800CED5AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD9DCEC42711D29800CED5AE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AD9DCECD2711D32100CED5AE /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +53,9 @@
 		AD9DCEBC2711D29300CED5AE /* TagView */ = {
 			isa = PBXGroup;
 			children = (
+				AD9DCECC2711D31600CED5AE /* Model */,
+				AD9DCECB2711D31100CED5AE /* View */,
 				AD9DCEBD2711D29300CED5AE /* TagViewApp.swift */,
-				AD9DCEBF2711D29300CED5AE /* ContentView.swift */,
 				AD9DCEC12711D29800CED5AE /* Assets.xcassets */,
 				AD9DCEC32711D29800CED5AE /* Preview Content */,
 			);
@@ -65,6 +68,22 @@
 				AD9DCEC42711D29800CED5AE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		AD9DCECB2711D31100CED5AE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AD9DCEBF2711D29300CED5AE /* ContentView.swift */,
+				AD9DCECD2711D32100CED5AE /* Home.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AD9DCECC2711D31600CED5AE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD9DCEC02711D29300CED5AE /* ContentView.swift in Sources */,
+				AD9DCECE2711D32100CED5AE /* Home.swift in Sources */,
 				AD9DCEBE2711D29300CED5AE /* TagViewApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
