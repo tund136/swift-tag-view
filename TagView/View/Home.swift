@@ -41,6 +41,9 @@ struct Home: View {
             
             // Add Button
             Button(action: {
+                // Adding Tag
+                tags.append(Tag(text: text))
+                text = ""
                 
             }, label: {
                 Text("Add Tag")
@@ -51,6 +54,9 @@ struct Home: View {
                     .background(Color.white)
                     .cornerRadius(10)
             })
+            // Disabling Button
+                .disabled(text == "")
+                .opacity(text == "" ? 0.5 : 1)
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)

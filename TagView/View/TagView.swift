@@ -21,7 +21,7 @@ struct TagView: View {
             
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(alignment: .leading, spacing: 10) {
-                    
+                    // Displaying Tags
                 }
                 .padding(.vertical)
             }
