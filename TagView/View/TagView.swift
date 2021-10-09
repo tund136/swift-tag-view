@@ -10,9 +10,26 @@ import SwiftUI
 // Custom view
 struct TagView: View {
     var maxLimit: Int
-    var tags: [Tag]
+    @Binding var tags: [Tag]
+    var title: String = "Add some Tags"
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading, spacing: 15) {
+            Text(title)
+                .font(.callout)
+                .foregroundColor(.white)
+            
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(alignment: .leading, spacing: 10) {
+                    
+                }
+                .padding(.vertical)
+            }
+            .frame(maxWidth: .infinity)
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .strokeBorder(Color.white.opacity(0.5), lineWidth: 1)
+            )
+        }
     }
 }

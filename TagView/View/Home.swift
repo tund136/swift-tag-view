@@ -10,6 +10,9 @@ import SwiftUI
 struct Home: View {
     @State private var text: String = ""
     
+    // Tags
+    @State private var tags: [Tag] = []
+    
     var body: some View {
         VStack {
             Text("Filter\nMenu")
@@ -19,6 +22,10 @@ struct Home: View {
                 .frame(maxWidth: .infinity, alignment: .leading )
             
             // Custom Tag View
+            TagView(maxLimit: 150, tags: $tags)
+            // Default height
+                .frame(height: 280)
+                .padding(.bottom)
             
             // TextField
             TextField("Apple", text: $text)
@@ -30,6 +37,7 @@ struct Home: View {
                 )
             // Setting only TextFiled as Dark
                 .environment(\.colorScheme, .dark)
+                .padding(.bottom)
             
             // Add Button
             Button(action: {
