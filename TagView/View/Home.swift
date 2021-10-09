@@ -8,7 +8,48 @@
 import SwiftUI
 
 struct Home: View {
+    @State private var text: String = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Filter\nMenu")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+                .frame(maxWidth: .infinity, alignment: .leading )
+            
+            // Custom Tag View
+            
+            // TextField
+            TextField("Apple", text: $text)
+                .font(.title3)
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 10)
+                        .strokeBorder(Color.white.opacity(0.5), lineWidth: 1)
+                )
+            // Setting only TextFiled as Dark
+                .environment(\.colorScheme, .dark)
+            
+            // Add Button
+            Button(action: {
+                
+            }, label: {
+                Text("Add Tag")
+                    .fontWeight(.semibold)
+                    .foregroundColor(Color(.systemTeal))
+                    .padding()
+                    .padding(.horizontal)
+                    .background(Color.white)
+                    .cornerRadius(10)
+            })
+        }
+        .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+        .background(
+            Color(.systemTeal)
+                .ignoresSafeArea()
+        )
     }
 }
+
