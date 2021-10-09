@@ -13,6 +13,7 @@
 		AD9DCEC52711D29800CED5AE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD9DCEC42711D29800CED5AE /* Preview Assets.xcassets */; };
 		AD9DCECE2711D32100CED5AE /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9DCECD2711D32100CED5AE /* Home.swift */; };
 		AD9DCED02711D8DB00CED5AE /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9DCECF2711D8DB00CED5AE /* TagView.swift */; };
+		AD9DCED22711D92800CED5AE /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9DCED12711D92800CED5AE /* Tag.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		AD9DCEC42711D29800CED5AE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AD9DCECD2711D32100CED5AE /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		AD9DCECF2711D8DB00CED5AE /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
+		AD9DCED12711D92800CED5AE /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 		AD9DCECC2711D31600CED5AE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AD9DCED12711D92800CED5AE /* Tag.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -161,6 +164,7 @@
 			files = (
 				AD9DCEC02711D29300CED5AE /* ContentView.swift in Sources */,
 				AD9DCECE2711D32100CED5AE /* Home.swift in Sources */,
+				AD9DCED22711D92800CED5AE /* Tag.swift in Sources */,
 				AD9DCEBE2711D29300CED5AE /* TagViewApp.swift in Sources */,
 				AD9DCED02711D8DB00CED5AE /* TagView.swift in Sources */,
 			);
