@@ -47,7 +47,16 @@ struct TagView: View {
             
             let size = (last.text as NSString).size(withAttributes: attributes)
             
-            print(size)
+            // Updating size
+            tags[getIndex(tag: last)].size = size.width
         }
+    }
+    
+    func getIndex(tag: Tag) -> Int {
+        let index = tags.firstIndex { currentTag in
+            return tag.id == currentTag.id
+        } ?? 0
+        
+        return index
     }
 }
