@@ -59,6 +59,8 @@ struct TagView: View {
             // Updating size
             tags[getIndex(tag: last)].size = size.width
         }
+        // Animation
+        .animation(.easeInOut, value: tags)
     }
     
     @ViewBuilder
@@ -76,6 +78,14 @@ struct TagView: View {
             )
             .foregroundColor(Color(.systemTeal))
             .lineLimit(1)
+        // Delete
+            .contentShape(Capsule())
+            .contextMenu {
+                Button("Delete") {
+                    // Deleting
+                    tags.remove(at: getIndex(tag: tag))
+                }
+            }
     }
     
     func getIndex(tag: Tag) -> Int {
