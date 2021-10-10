@@ -15,6 +15,9 @@ struct TagView: View {
     var title: String = "Add some Tags"
     var fontSize: CGFloat = 16
     
+    // Adding Geometry Effect to Tag
+    @Namespace var animation
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
             Text(title)
@@ -35,19 +38,28 @@ struct TagView: View {
                 }
                 .frame(width: UIScreen.main.bounds.width - 80, alignment: .leading)
                 .padding(.vertical)
+                .padding(.bottom, 20)
             }
             .frame(maxWidth: .infinity)
             .background(
                 RoundedRectangle(cornerRadius: 10)
                     .strokeBorder(Color.white.opacity(0.5), lineWidth: 1)
             )
+            // Animation
+            .animation(.easeInOut, value: tags)
+            .overlay(
+                // Limit
+                Text("\(getSize(tags: tags))/\(maxLimit)")
+                    .font(.system(size: 13, weight: .semibold))
+                    .foregroundColor(Color.white)
+                    .padding(12)
+                , alignment: .bottomTrailing
+            )
         }
         // Since onChange will perform little late
-//        .onChange(of: tags) { newValue in
-//
-//        }
-        // Animation
-        .animation(.easeInOut, value: tags)
+        //        .onChange(of: tags) { newValue in
+        //
+        //        }
     }
     
     @ViewBuilder
@@ -73,6 +85,7 @@ struct TagView: View {
                     tags.remove(at: getIndex(tag: tag))
                 }
             }
+            .matchedGeometryEffect(id: tag.id, in: animation)
     }
     
     func getIndex(tag: Tag) -> Int {
@@ -130,13 +143,29 @@ struct TagView: View {
 }
 
 // Global function
-func addTag(text: String, fontSize: CGFloat) -> Tag {
+func addTag(tags: [Tag], text: String, fontSize: CGFloat, maxLimit: Int, completion: @escaping (Bool, Tag) -> ()) {
     // Getting text size
     let font = UIFont.systemFont(ofSize: fontSize)
     
     let attributes = [NSAttributedString.Key.font: font]
     
     let size = (text as NSString).size(withAttributes: attributes)
+    
+    let tag = Tag(text: text, size: size.width)
+    
+    if (getSize(tags: tags) + text.count) < maxLimit {
+        completion(false, tag)
+    } else {
+        completion(true, tag)
+    }
+}
 
-    return Tag(text: text, size: size.width)
+func getSize(tags: [Tag]) -> Int {
+    var count: Int = 0
+    
+    tags.forEach { tag in
+        count += tag.text.count
+    }
+    
+    return count
 }
