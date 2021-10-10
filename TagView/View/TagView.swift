@@ -42,23 +42,10 @@ struct TagView: View {
                     .strokeBorder(Color.white.opacity(0.5), lineWidth: 1)
             )
         }
-        .onChange(of: tags) { newValue in
-            // Getting new inserted value
-            guard let last = tags.last
-            else {
-                return
-            }
-            
-            // Getting text size
-            let font = UIFont.systemFont(ofSize: fontSize)
-            
-            let attributes = [NSAttributedString.Key.font: font]
-            
-            let size = (last.text as NSString).size(withAttributes: attributes)
-            
-            // Updating size
-            tags[getIndex(tag: last)].size = size.width
-        }
+        // Since onChange will perform little late
+//        .onChange(of: tags) { newValue in
+//
+//        }
         // Animation
         .animation(.easeInOut, value: tags)
     }
@@ -140,4 +127,16 @@ struct TagView: View {
         
         return rows
     }
+}
+
+// Global function
+func addTag(text: String, fontSize: CGFloat) -> Tag {
+    // Getting text size
+    let font = UIFont.systemFont(ofSize: fontSize)
+    
+    let attributes = [NSAttributedString.Key.font: font]
+    
+    let size = (text as NSString).size(withAttributes: attributes)
+
+    return Tag(text: text, size: size.width)
 }

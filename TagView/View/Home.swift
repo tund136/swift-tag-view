@@ -42,7 +42,7 @@ struct Home: View {
             // Add Button
             Button(action: {
                 // Adding Tag
-                tags.append(Tag(text: text))
+                tags.append(addTag(text: text, fontSize: 16))
                 text = ""
                 
             }, label: {
