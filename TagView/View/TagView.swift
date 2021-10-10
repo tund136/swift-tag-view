@@ -25,8 +25,11 @@ struct TagView: View {
                 VStack(alignment: .leading, spacing: 10) {
                     // Displaying Tags
                     ForEach(getRows(), id: \.self) { rows in
-                        ForEach(rows) { row in
-                            // Row View
+                        HStack(spacing: 6) {
+                            ForEach(rows) { row in
+                                // Row View
+                                RowView(tag: row)
+                            }
                         }
                     }
                 }
@@ -58,6 +61,23 @@ struct TagView: View {
         }
     }
     
+    @ViewBuilder
+    func RowView(tag: Tag) -> some View {
+        Text(tag.text)
+        // Applying same font size
+        // else size will vary
+            .font(.system(size: fontSize))
+        // Adding capsule
+            .padding(.horizontal, 14)
+            .padding(.vertical, 8)
+            .background(
+                Capsule()
+                    .fill(Color.white)
+            )
+            .foregroundColor(Color(.systemTeal))
+            .lineLimit(1)
+    }
+    
     func getIndex(tag: Tag) -> Int {
         let index = tags.firstIndex { currentTag in
             return tag.id == currentTag.id
@@ -80,12 +100,19 @@ struct TagView: View {
         
         tags.forEach { tag in
             // Updating total width
-            totalWidth += tag.size
+            
+            // Adding the capsule size into total width with spacing
+            // 14 + 14 + 6 + 6
+            // Extra 6 for safety
+            totalWidth += (tag.size + 40)
             
             // Checking if total width is greater than size
             if totalWidth > screenWidth {
                 // Adding row in rows
                 // Clearning the data
+                // Checking for long string
+                totalWidth = (!currentRow.isEmpty || rows.isEmpty ? (tag.size + 40) : 0)
+                
                 rows.append(currentRow)
                 currentRow.removeAll()
                 currentRow.append(tag)
