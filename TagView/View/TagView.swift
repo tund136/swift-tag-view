@@ -24,7 +24,13 @@ struct TagView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(alignment: .leading, spacing: 10) {
                     // Displaying Tags
+                    ForEach(getRows(), id: \.self) { rows in
+                        ForEach(rows) { row in
+                            // Row View
+                        }
+                    }
                 }
+                .frame(width: UIScreen.main.bounds.width - 80, alignment: .leading)
                 .padding(.vertical)
             }
             .frame(maxWidth: .infinity)
@@ -58,5 +64,43 @@ struct TagView: View {
         } ?? 0
         
         return index
+    }
+    
+    // Basic logic
+    // Splitting the array when it exceeds the screen size
+    func getRows() -> [[Tag]] {
+        var rows: [[Tag]] = []
+        var currentRow: [Tag] = []
+        
+        // Calculating text width
+        var totalWidth: CGFloat = 0
+        
+        // For safety extra 10
+        let screenWidth: CGFloat = UIScreen.main.bounds.width - 90
+        
+        tags.forEach { tag in
+            // Updating total width
+            totalWidth += tag.size
+            
+            // Checking if total width is greater than size
+            if totalWidth > screenWidth {
+                // Adding row in rows
+                // Clearning the data
+                rows.append(currentRow)
+                currentRow.removeAll()
+                currentRow.append(tag)
+            } else {
+                currentRow.append(tag)
+            }
+        }
+        
+        // Safe check
+        // If having any value storing it in rows
+        if !currentRow.isEmpty {
+            rows.append(currentRow)
+            currentRow.removeAll()
+        }
+        
+        return rows
     }
 }
